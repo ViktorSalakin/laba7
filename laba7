@@ -1,0 +1,50 @@
+#include 'pch.h'
+#include<stdio.h>
+void bp(long a);
+lengt(int num);
+
+main()
+{
+	long N;
+	int l, count = 0, i;
+	unsigned int  mask = 0x1;
+	printf("write N:\n");
+	scanf("%d", &N);
+	bp(N);
+	l = lengt(N);
+	count = l;
+	for (i = 0; i < l; i++)
+	{
+		count -= (mask&N) ? 1 : 0;
+		N |= mask;
+		mask <<= 1;
+	}
+	N >>= count;
+	N <<= count;
+	bp(N);
+	return 0;
+}
+void bp(long a)
+{
+	unsigned mask = 0x80000000;
+	printf("binary number: ");
+	for (int i = 1; i <= (sizeof(a) * 8); i++)
+	{
+		if (a & mask)
+			printf("1");
+		else
+			printf("0");
+		if ((i % 8) == 0)
+			printf(" ");
+		mask = mask >> 1;
+	}
+	printf("\n");
+}
+lengt(int num)
+{
+	int i;
+	for (i = 1; num != 0; i++)
+		num = num / 2;
+	return i - 1;
+}
+
