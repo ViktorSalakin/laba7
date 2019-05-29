@@ -46,5 +46,6 @@ lengt(int num)
 	for (i = 1; num != 0; i++)
 		num = num / 2;
 	return i - 1;
-}
+}   
+
 
