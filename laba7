@@ -1,4 +1,4 @@
-#include 'pch.h'
+#include"pch.h"
 #include<stdio.h>
 void bp(long a);
 lengt(int num);
@@ -9,7 +9,7 @@ main()
 	int l, count = 0, i;
 	unsigned int  mask = 0x1;
 	printf("write N:\n");
-	scanf("%d", &N);
+	scanf_s("%d", &N);
 	bp(N);
 	l = lengt(N);
 	count = l;
@@ -20,7 +20,7 @@ main()
 		mask <<= 1;
 	}
 	N >>= count;
-	N <<= count;
+	N <<= (sizeof(N) * 8 - (l - count));
 	bp(N);
 	return 0;
 }
@@ -46,6 +46,4 @@ lengt(int num)
 	for (i = 1; num != 0; i++)
 		num = num / 2;
 	return i - 1;
-}   
-
-
+}
